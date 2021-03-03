@@ -36,8 +36,8 @@ Manage Student
                       <th>Gender</th>
                       <th>Profile</th>
                       <th>Course</th>
-                      <th>Stat Year</th>
-                      <th>End Year</th>
+                      <th>Session Year</th>
+                
                       <th>Last Login</th>
                       <th>Date Joined</th>
                       <th>Action</th>
@@ -55,8 +55,8 @@ Manage Student
                       <td>{{p.gender}}</td>
                       <td><img src="{{p.profile_pic}}" style="width: 80px;"/></td>
                       <td>{{p.course_id.course_name}}</td>
-                      <td>{{p.session_start_year}}</td>
-                      <td>{{p.session_end_year}}</td>
+                      <td>{{p.session_year_id.session_start_year}}To{{p.session_year_id.session_end_year}}</td>
+                     
                       <td>{{p.admin.last_login}}</td>
                       <td>{{p.admin.date_joined}}</td>
                       <td><a href="{% url 'edit_student' student_id=p.admin.id %}" class="btn btn-success">Edit</a></td>        

@@ -2,7 +2,7 @@ from django.urls import path,include
 #from . import views
 #from student_management_app.hodviews import admin_home
 #from . import hodviews
-from student_management_app import views, hodviews
+from student_management_app import views, hodviews,StaffView,StudentView
 
 urlpatterns = [
     path('demu',views.Index,name="index"),
@@ -31,6 +31,15 @@ urlpatterns = [
     path('edit_subject_save',hodviews.edit_subject_save,name="edit_subject_save"),
     path('edit_course/<str:course_id>',hodviews.edit_course,name="edit_course"),
     path('edit_course_save',hodviews.edit_course_save,name="edit_course_save"),
+    
+    path('student_home', StudentView.student_home, name="student_home"),
+    path('manage_session', hodviews.manage_session,name="manage_session"),
+    path('add_session_save', hodviews.add_session_save,name="add_session_save"),
+
+    path('staff_home', StaffView.staff_home, name="staff_home"),
+    path('staff_take_attendance', StaffView.staff_take_attendance,name="staff_take_attendance"),
+    path('get_students', StaffView.get_students, name="get_students"),
+       path('save_attendance_data', StaffView.save_attendance_data, name="save_attendance_data"),
     
     
 ] 

@@ -22,14 +22,14 @@ def doLogin(request):
         user=EmailBackEnd.authenticate(request,username=request.POST.get("email"),password=request.POST.get("password"))
         if user!=None:
             login(request,user)
-            return HttpResponseRedirect('/admin_home')
-            #return HttpResponse("Email : "+request.POST.get("email")+" Password : "+request.POST.get("password"))
-            # if user.user_type=="1":
-            #     return HttpResponseRedirect('/admin_home')
-            # elif user.user_type=="2":
-            #     return HttpResponseRedirect(reverse("staff_home"))
-            # else:
-            #     return HttpResponseRedirect(reverse("student_home"))
+            # return HttpResponseRedirect('/admin_home')
+            # return HttpResponse("Email : "+request.POST.get("email")+" Password : "+request.POST.get("password"))
+            if user.user_type=="1":
+                return HttpResponseRedirect('/admin_home')
+            elif user.user_type=="2":
+                return HttpResponseRedirect(reverse("staff_home"))
+            else:
+                return HttpResponseRedirect(reverse("student_home"))
         else:
             messages.error(request,"Invalid Login Details")
             return HttpResponseRedirect("/")

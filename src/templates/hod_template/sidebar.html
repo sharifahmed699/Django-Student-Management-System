@@ -16,7 +16,7 @@
             <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander</a>
+          <a href="#" class="d-block">{{user.username}}</a>
         </div>
       </div>
 
@@ -108,6 +108,17 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Manage Subject
+               
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'manage_session' as manage_session %}
+            
+            <a href="{% url 'manage_session' %}" class="nav-link {% if request.path == manage_session %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Manage Session Year
                
               </p>
             </a>
