@@ -42,6 +42,7 @@ Manage Subject
                       <td>{{p.subject_name}}</td>
                       <td>{{p.course_id.course_name}}</td>
                       <td>{{p.course_id.id}}</td>
+                      <td>{{ p.staff_id.first_name }} {{ p.staff_id.last_name }}</td>
                       <td><a href="/edit_subject/{{ p.id }}" class="btn btn-success">Edit</a></td>        
                     </tr>
                    
