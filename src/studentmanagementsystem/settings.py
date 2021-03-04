@@ -56,7 +56,7 @@ ROOT_URLCONF = 'studentmanagementsystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['student_management_app/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,3 +136,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL="student_management_app.CustomUser"
 AUTHENTICATION_BACKENDS=['student_management_app.EmailBackEnd.EmailBackEnd']
+
+EMAIL_BACKEND="django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH=os.path.join(BASE_DIR,"sent_mails")
+
+
+# EMAIL_HOST="smtp.gmail.com"
+# EMAIl_PORT=587
+# EMAIL_HOST_USER=""
+# EMAIL_HOST_PASSWORD=""
+# EMAIL_USE_TLS=True
+# DEFAULT_FROM_EMAIL="Student management System <@gmail.com>"
