@@ -47,7 +47,7 @@ def save_attendance_data(request):
     attendance_date=request.POST.get("attendance_date")
     session_year_id=request.POST.get("session_year_id")
 
-    subject_model=Subjects.objects.get(id=subject_id)
+    subject_model=Subject.objects.get(id=subject_id)
     session_model=SessionYearModel.object.get(id=session_year_id)
     json_sstudent=json.loads(student_ids)
     #print(data[0]['id'])
@@ -58,7 +58,7 @@ def save_attendance_data(request):
         attendance.save()
 
         for stud in json_sstudent:
-             student=Students.objects.get(admin=stud['id'])
+             student=Student.objects.get(admin=stud['id'])
              attendance_report=AttendanceReport(student_id=student,attendance_id=attendance,status=stud['status'])
              attendance_report.save()
         return HttpResponse("OK")

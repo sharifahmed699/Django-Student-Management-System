@@ -31,6 +31,10 @@ urlpatterns = [
     path('edit_subject_save',hodviews.edit_subject_save,name="edit_subject_save"),
     path('edit_course/<str:course_id>',hodviews.edit_course,name="edit_course"),
     path('edit_course_save',hodviews.edit_course_save,name="edit_course_save"),
+    path('student_feedback_message', hodviews.student_feedback_message,name="student_feedback_message"),
+    path('student_feedback_message_replied', hodviews.student_feedback_message_replied,name="student_feedback_message_replied"),
+    path('staff_feedback_message', hodviews.staff_feedback_message,name="staff_feedback_message"),
+    path('staff_feedback_message_replied', hodviews.staff_feedback_message_replied,name="staff_feedback_message_replied"),
     
    
     path('manage_session', hodviews.manage_session,name="manage_session"),
