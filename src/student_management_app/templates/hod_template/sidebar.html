@@ -16,7 +16,7 @@
             <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{user.username}}</a>
+          <a href="{% url 'admin_profile' %}" class="d-block">{{user.username}}</a>
         </div>
       </div>
 
@@ -138,6 +138,24 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Staff Feedback
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'student_leave_view' as student_leave_view %}
+            <a href="{% url 'student_leave_view' %}" class="nav-link {% if request.path == student_leave_view %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Student Leave
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'staff_leave_view' as staff_leave_view %}
+            <a href="{% url 'staff_leave_view' %}" class="nav-link {% if request.path == staff_leave_view %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Staff Leave
               </p>
             </a>
           </li>

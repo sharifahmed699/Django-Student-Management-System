@@ -35,12 +35,20 @@ urlpatterns = [
     path('student_feedback_message_replied', hodviews.student_feedback_message_replied,name="student_feedback_message_replied"),
     path('staff_feedback_message', hodviews.staff_feedback_message,name="staff_feedback_message"),
     path('staff_feedback_message_replied', hodviews.staff_feedback_message_replied,name="staff_feedback_message_replied"),
-    
-   
+    path('student_leave_view', hodviews.student_leave_view,name="student_leave_view"),
+    path('staff_leave_view', hodviews.staff_leave_view,name="staff_leave_view"),
+    path('student_approve_leave/<str:leave_id>', hodviews.student_approve_leave,name="student_approve_leave"),
+    path('student_disapprove_leave/<str:leave_id>', hodviews.student_disapprove_leave,name="student_disapprove_leave"),
+    path('staff_disapprove_leave/<str:leave_id>', hodviews.staff_disapprove_leave,name="staff_disapprove_leave"),
+    path('staff_approve_leave/<str:leave_id>', hodviews.staff_approve_leave,name="staff_approve_leave"),
+    path('admin_profile', hodviews.admin_profile,name="admin_profile"),
+    path('admin_profile_save', hodviews.admin_profile_save,name="admin_profile_save"),
+
     path('manage_session', hodviews.manage_session,name="manage_session"),
     path('add_session_save', hodviews.add_session_save,name="add_session_save"),
     path('check_email_exist', hodviews.check_email_exist,name="check_email_exist"),
     path('check_username_exist', hodviews.check_username_exist,name="check_username_exist"),
+    
 
     path('staff_home', StaffView.staff_home, name="staff_home"),
     path('staff_take_attendance', StaffView.staff_take_attendance,name="staff_take_attendance"),
@@ -50,12 +58,17 @@ urlpatterns = [
     path('staff_apply_leave_save', StaffView.staff_apply_leave_save, name="staff_apply_leave_save"),
     path('staff_feedback', StaffView.staff_feedback, name="staff_feedback"),
     path('staff_feedback_save', StaffView.staff_feedback_save, name="staff_feedback_save"),
+    path('staff_profile', StaffView.staff_profile,name="staff_profile"),
+    path('staff_profile_save', StaffView.staff_profile_save,name="staff_profile_save"),
 
     path('student_home', StudentView.student_home, name="student_home"),
     path('student_apply_leave', StudentView.student_apply_leave, name="student_apply_leave"),
     path('student_apply_leave_save', StudentView.student_apply_leave_save, name="student_apply_leave_save"),
     path('student_feedback', StudentView.student_feedback, name="student_feedback"),
     path('student_feedback_save', StudentView.student_feedback_save, name="student_feedback_save"),
+    path('student_profile', StudentView.student_profile,name="student_profile"),
+    path('student_profile_save', StudentView.student_profile_save,name="student_profile_save"),
+
 
     
     

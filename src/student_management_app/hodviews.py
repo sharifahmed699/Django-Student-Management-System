@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from student_management_app.forms import AddStudentForm,EditStudentForm
 
-from student_management_app.models import CustomUser, Staff,Course,Student,Subject,SessionYearModel,FeedBackStudent,FeedBackStaff
+from student_management_app.models import CustomUser, Staff,Course,Student,Subject,SessionYearModel,FeedBackStudent,FeedBackStaff,LeaveReportStudent,LeaveReportStaff
 
 
 def admin_home(request):
@@ -388,3 +388,59 @@ def staff_feedback_message_replied(request):
         return HttpResponse("True")
     except:
         return HttpResponse("False")
+
+
+def student_leave_view(request):
+    leaves=LeaveReportStudent.objects.all()
+    return render(request,"hod_template/student_leave_view.html",{"leaves":leaves})
+
+def student_approve_leave(request,leave_id):
+    leave=LeaveReportStudent.objects.get(id=leave_id)
+    leave.leave_status=1
+    leave.save()
+    return HttpResponseRedirect(reverse("student_leave_view"))
+
+def student_disapprove_leave(request,leave_id):
+    leave=LeaveReportStudent.objects.get(id=leave_id)
+    leave.leave_status=2
+    leave.save()
+    return HttpResponseRedirect(reverse("student_leave_view"))
+def staff_leave_view(request):
+    leaves=LeaveReportStaff.objects.all()
+    return render(request,"hod_template/staff_leave_view.html",{"leaves":leaves})
+
+def staff_approve_leave(request,leave_id):
+    leave=LeaveReportStaff.objects.get(id=leave_id)
+    leave.leave_status=1
+    leave.save()
+    return HttpResponseRedirect(reverse("staff_leave_view"))
+
+def staff_disapprove_leave(request,leave_id):
+    leave=LeaveReportStaff.objects.get(id=leave_id)
+    leave.leave_status=2
+    leave.save()
+    return HttpResponseRedirect(reverse("staff_leave_view"))
+
+
+def admin_profile(request):
+    user=CustomUser.objects.get(id=request.user.id)
+    return render(request,"hod_template/admin_profile.html",{"user":user})
+
+def admin_profile_save(request):
+    if request.method!="POST":
+        return HttpResponseRedirect(reverse("admin_profile"))
+    else:
+        first_name=request.POST.get("first_name")
+        last_name=request.POST.get("last_name")
+        try:
+            customuser=CustomUser.objects.get(id=request.user.id)
+            customuser.first_name=first_name
+            customuser.last_name=last_name
+            # if password!=None and password!="":
+            #     customuser.set_password(password)
+            customuser.save()
+            messages.success(request, "Successfully Updated Profile")
+            return HttpResponseRedirect(reverse("admin_profile"))
+        except:
+            messages.error(request, "Failed to Update Profile")
+            return HttpResponseRedirect(reverse("admin_profile"))
