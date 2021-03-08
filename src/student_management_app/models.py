@@ -56,15 +56,16 @@ class Student(models.Model):
 
 class Attendance(models.Model):
     subject_id=models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
-    attendance_date=models.DateTimeField(auto_now_add=True)
+    attendance_date=models.DateField()
     session_year_id=models.ForeignKey(SessionYearModel,on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
+
 class AttendanceReport(models.Model):
     student_id=models.ForeignKey(Student, on_delete=models.DO_NOTHING)
-    attendance_id=models.ForeignKey(Attendance, on_delete=models.DO_NOTHING)
+    attendance_id=models.ForeignKey(Attendance, on_delete=models.CASCADE)
     status=models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
