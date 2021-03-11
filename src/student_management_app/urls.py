@@ -3,6 +3,7 @@ from django.urls import path,include
 #from student_management_app.hodviews import admin_home
 #from . import hodviews
 from student_management_app import views, hodviews,StaffView,StudentView
+from student_management_app.EditResultViewClass import EditResultViewClass
 
 urlpatterns = [
     path('demu',views.Index,name="index"),
@@ -64,6 +65,10 @@ urlpatterns = [
     path('staff_feedback_save', StaffView.staff_feedback_save, name="staff_feedback_save"),
     path('staff_profile', StaffView.staff_profile,name="staff_profile"),
     path('staff_profile_save', StaffView.staff_profile_save,name="staff_profile_save"),
+    path('staff_add_result', StaffView.staff_add_result, name="staff_add_result"),
+    path('save_student_result', StaffView.save_student_result, name="save_student_result"),
+    path('edit_student_result',EditResultViewClass.as_view(), name="edit_student_result"),
+    path('fetch_result_student',StaffView.fetch_result_student, name="fetch_result_student"),
 
     path('student_home', StudentView.student_home, name="student_home"),
     path('student_view_attendance', StudentView.student_view_attendance, name="student_view_attendance"),

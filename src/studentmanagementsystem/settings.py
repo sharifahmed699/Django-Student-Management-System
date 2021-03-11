@@ -25,8 +25,8 @@ SECRET_KEY = 'i(9-ld6vv7mj9hruy9%sq%v4tp9-pc^d=t)-=_dxl8fe!vb02y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = ["studentmanagementsystem699.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -147,3 +148,9 @@ EMAIL_FILE_PATH=os.path.join(BASE_DIR,"sent_mails")
 # EMAIL_HOST_PASSWORD=""
 # EMAIL_USE_TLS=True
 # DEFAULT_FROM_EMAIL="Student management System <@gmail.com>"
+
+
+# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+# import dj_database_url
+# prod_db=dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
